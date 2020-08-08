@@ -13,6 +13,7 @@ jobs:
       NOME_IMAGEM: anp-apicontagem-p7
       IMAGEM_DOCKERHUB: ${{ secrets.DOCKER_USERNAME }}/$NOME_IMAGEM
       IMAGEM_AZURE: ${{ secrets.AZURE_CONTAINER_REGISTRY_SERVER }}/$NOME_IMAGEM
+      NOME_WEBAPP: groffeanp
 
     runs-on: ubuntu-latest
 
@@ -51,3 +52,13 @@ jobs:
     - name: Listando as imagens geradas
       run: docker images
       
+    - name: Azure Login - Conectando com Credenciais no Azure
+      uses: Azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+       
+    - name: Azure WebApp - Deployment da Aplicacao
+      uses: Azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.NOME_WEBAPP }}
+        images: 'groffegithubactions.azurecr.io/anp-apicontagem-preview7:latest'
