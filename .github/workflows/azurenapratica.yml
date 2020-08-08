@@ -61,4 +61,4 @@ jobs:
       uses: Azure/webapps-deploy@v2
       with:
         app-name: ${{ env.NOME_WEBAPP }}
-        images: 'groffegithubactions.azurecr.io/anp-apicontagem-preview7:latest'
+        images: 'groffegithubactions.azurecr.io/anp-apicontagem-p7:latest'
