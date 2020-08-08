@@ -9,11 +9,16 @@ on:
 jobs:
 
   build:
+    env:
+      NOME_IMAGEM: anp-apicontagem-p7
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Exibir nome padrão das imagens
+      run: echo {{ env.NOME_IMAGEM }}
 
     - name: Docker Login - Docker Hub
       uses: Azure/docker-login@v1
