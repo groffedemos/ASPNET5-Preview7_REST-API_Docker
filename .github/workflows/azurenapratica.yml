@@ -25,7 +25,7 @@ jobs:
       env:
         NOME_COMPLETO_IMAGEM: ${{ secrets.DOCKER_USERNAME }}/${{ env.NOME_IMAGEM }} 
       run: |
-        cd ./SiteContagem
+        cd ./APIContagem
         ls
         docker build . --file Dockerfile --tag ${{ env.NOME_COMPLETO_IMAGEM }}:latest
         docker tag ${{ env.NOME_COMPLETO_IMAGEM }}:latest ${{ env.NOME_COMPLETO_IMAGEM }}:$GITHUB_RUN_NUMBER
